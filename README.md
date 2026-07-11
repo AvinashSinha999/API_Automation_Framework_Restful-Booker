@@ -19,25 +19,26 @@
 
 # 🗂️ Overview
 
-This repository contains a modular **API Automation Framework** for testing the **Restful Booker** APIs.
+This repository contains a modular **API Automation Framework** developed for testing the **Restful Booker** APIs using **Java**, **Rest-Assured**, **TestNG**, and **Maven**.
 
-Built with **Java**, **Rest-Assured**, **TestNG**, and **Maven**, the framework demonstrates industry-standard API automation practices including **POJO-based payload serialization**, **authentication**, **CRUD operations**, reusable assertion utilities, end-to-end workflow testing, logging, and interactive Allure reporting.
+The framework demonstrates industry-standard API automation practices, including **authentication**, **CRUD operations**, **POJO-based payload management**, **centralized assertions**, **end-to-end workflow testing**, **logging**, and **Allure reporting**.
 
-The framework uses **GSON** for request and response serialization/deserialization, providing clean, type-safe, and maintainable API test automation.
+Using **GSON** for request and response serialization/deserialization, the framework provides a clean, type-safe, and maintainable approach to API automation while promoting **clean architecture**, **code reusability**, and **scalable test automation**.
 
 ---
 
-# ✨ Features
+# ✨ Key Features
 
 - ✅ Complete CRUD API Automation
 - ✅ Token-Based Authentication
-- ✅ POJO-Based Payload Serialization
-- ✅ Modular Framework Design
+- ✅ POJO-Based Payload Management
+- ✅ GSON Serialization & Deserialization
+- ✅ Modular Framework Architecture
 - ✅ Centralized Assertion Utilities
-- ✅ End-to-End Integration Testing
+- ✅ End-to-End Workflow Testing
 - ✅ TestNG Suite Execution
 - ✅ Log4j2 Logging
-- ✅ Allure Reporting
+- ✅ Rich Allure Reporting
 
 ---
 
@@ -62,11 +63,13 @@ The framework uses **GSON** for request and response serialization/deserializati
 ```text
 API_Automation_Framework_RestfulBooker/
 │
-├── .idea/                                                    # IntelliJ config
+├── .idea/                                                    # IntelliJ configuration
 ├── .mvn/                                                     # Maven wrapper files
-├── allure-results/                                           # Allure results (auto-generated)
+├── allure-results/                                           # Allure execution results
+├── logs/
+│   └── test.log                                              # Test execution logs
 │
-├── pom.xml                                                   # Project dependencies & build config
+├── pom.xml                                                   # Maven dependencies & build configuration
 ├── .gitignore
 ├── testng_*.xml                                              # TestNG suite files
 │
@@ -77,9 +80,9 @@ API_Automation_Framework_RestfulBooker/
 │   │   │   │   └── APIConstants.java                         # API endpoint constants
 │   │   │   │
 │   │   │   ├── com.avinashsinha.modules/
-│   │   │   │   └── PayloadManager.java                       # Payload manager
+│   │   │   │   └── PayloadManager.java                       # POJO payload manager
 │   │   │   │
-│   │   │   └── com.avinashsinha.pojos/
+│   │   │   └── com.avinashsinha.pojos/                       # Request/Response POJOs
 │   │   │       ├── Auth.java
 │   │   │       ├── Booking.java
 │   │   │       ├── BookingDates.java
@@ -98,7 +101,7 @@ API_Automation_Framework_RestfulBooker/
 │           │   └── BaseTest.java                             # Base test configuration
 │           │
 │           └── com.avinashsinha.tests/
-│               ├── crud/                                     # CRUD Test Cases
+│               ├── crud/                                     # CRUD test cases
 │               │   ├── TestBookingCreate.java
 │               │   ├── TestBookingDateValidation.java
 │               │   ├── TestBookingDeletion.java
@@ -109,10 +112,10 @@ API_Automation_Framework_RestfulBooker/
 │               │   ├── TestCheckHealth.java
 │               │   └── TestTokenCreate.java
 │               │
-│               ├── integration/                              # Integration Test Cases
+│               ├── integration/                              # End-to-end workflow tests
 │               │   └── TestE2EFlow.java
 │               │
-│               └── sample/                                   # Sample Tests
+│               └── sample/                                   # Sample test implementations
 │                   └── TestIntegrationSample.java
 │
 └── README.md
@@ -125,22 +128,22 @@ API_Automation_Framework_RestfulBooker/
 | Component | Description |
 |------------|-------------|
 | **APIConstants** | Stores all API endpoint constants |
-| **PayloadManager** | Creates reusable POJO request payloads |
-| **POJOs** | Request and response serialization models |
-| **BaseTest** | Provides common test setup and configuration |
-| **AssertActions** | Centralized assertion utilities |
-| **CRUD Tests** | Individual booking API test scenarios |
-| **Integration Tests** | End-to-end booking workflow validation |
-| **Resources** | Log4j2 configuration files |
+| **PayloadManager** | Generates reusable POJO request payloads |
+| **POJOs** | Request and response models for GSON serialization |
+| **BaseTest** | Provides common test initialization and configuration |
+| **AssertActions** | Contains centralized assertion utilities |
+| **CRUD Tests** | Implements booking CRUD and validation scenarios |
+| **Integration Tests** | Validates complete end-to-end booking workflows |
+| **Resources** | Stores Log4j2 configuration files |
 
 ---
 
-# ✅ Test Coverage
+# 🌐 API Coverage
 
 | Endpoint | Test Scenario |
 |-----------|---------------|
 | **POST** `/auth` | Generate Authentication Token |
-| **GET** `/ping` | Health Check |
+| **GET** `/ping` | Verify API Health Status |
 | **POST** `/booking` | Create Booking |
 | **GET** `/booking/{id}` | Retrieve Booking by ID |
 | **GET** `/booking` | Verify Booking by Name |
@@ -180,7 +183,7 @@ mvn clean test -DsuiteXmlFile=testng_Integration.xml
 
 # 📊 Allure Reports
 
-Generate the report using:
+Generate and launch the Allure report using:
 
 ```bash
 allure serve allure-results
@@ -190,7 +193,7 @@ allure serve allure-results
 <img width="1100" src="https://github.com/user-attachments/assets/4e746c4a-78d6-4c0d-9e67-492ff048c799" alt="Restful Booker Allure Report">
 </p>
 
-The command launches an interactive Allure dashboard in your default browser.
+The command generates and opens an interactive **Allure dashboard** displaying execution results, logs, and test statistics.
 
 ---
 
@@ -214,14 +217,28 @@ booking.setAdditionalneeds("Lunch");
 
 ---
 
+# ⭐ Repository Highlights
+
+- ✔ Modular API Automation Framework
+- ✔ Industry-Standard Project Structure
+- ✔ Token-Based Authentication
+- ✔ Complete CRUD API Testing
+- ✔ POJO + GSON Payload Management
+- ✔ Centralized Assertions
+- ✔ End-to-End Integration Testing
+- ✔ Log4j2 Logging
+- ✔ Rich Allure Reporting
+
+---
+
 # 👨‍💻 Author
 
 **Avinash Sinha**
 
-If you found this repository helpful, consider giving it a ⭐ on GitHub.
+If you found this repository useful, consider giving it a ⭐.
 
 ---
 
 # 📄 License
 
-This project is intended for **educational** and **learning purposes**.
+This repository is intended for **educational** and **learning purposes**.
